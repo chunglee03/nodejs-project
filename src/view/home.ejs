@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="header">
+<h2 style="text-align: center;">Quản lý sinh viên</h2>
+<p style="text-align: center;">Kiến thức - Kinh nghiệm - Hỏi đáp</p>
+</div>
+
+<ul>
+<li><a class="active" href="/">Trang chủ</a></li>
+<li><a href="#">Chương trình đào tạo</a></li>
+<li><a href="#">Tuyển sinh</a></li>
+<li><a href="#">Đảm bảo chất lượng</a></li>
+<li><a href="#">Khoa học - Công nghệ</a></li>
+</ul>
+<form action="create" method="get">
+  <button class="create-btn">Thêm sinh viên</button>
+</form>
+
+
+<div class="table">
+  <h2>Danh sách sinh viên</h2>
+  
+  <p>Đây là danh sách sinh viên đăng kí khóa học NodeJS trên Website</p>
+  
+  <table>
+    <tr>
+      <th>Họ tên</th>
+      <th>Lớp</th>
+      <th>Số điện thoại</th>
+      <th>Email</th>
+      <th>Địa chỉ</th>
+      <th>Thao tác</th>
+    </tr>
+    <% listStudents.forEach(function(student) {%>
+      <tr>
+        <td><%= student.id %></td>
+        <td><%= student.name %></td>
+        <td><%= student.class %></td>
+        <td><%= student.phone %></td>
+        <td><%= student.email %></td>
+        <td><%= student.address %></td>
+        <td>
+          <form action="edit/<%= student.id %>" method="get">
+            <button class="actionBtn">Sửa</button>
+          </form>
+          <form action="delete/<%= student.id %>" method="get">
+            <button class="actionBtn">Xóa</button>
+          </form>
+          </td>
+        </tr>
+      <% }); %>
+  </table>
+</div>
+
+</body>
+</html>
